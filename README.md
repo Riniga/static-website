@@ -1,8 +1,7 @@
-#NodeJS Static Web Application
+# NodeJS Static Web Application
 A basic framework web site to demonstrate the use of Node.Js, gulp, jade/pug, sass and typescript to build a static easy maintainable source code
 
-
-Tools to use
+## Tools to use
 - Node.Js - Ramverk för lokal server och import av paket m.m.
 - Gulp - Sätta samman och skapa slutresultat
 - Pug - Ett bättre sätt att skapa html
@@ -32,6 +31,7 @@ A simple http-server is used to display the site at localhost
 
 ## Bad bad fsevents...
 To get rid of a warning: npm install -f fsevents
+But this also destroys npm install as fsevent is not for windows...
 
 ## code for the package
 - Gulp script: gulpfile.js
