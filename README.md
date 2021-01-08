@@ -28,8 +28,6 @@ A simple http-server is used to display the site at localhost
 
 ## Install dependencies
 - npm install express --save
-- npm install http --save
-- npm install jquery --save
 - npm install open --save
 
 ## Bad bad fsevents...
