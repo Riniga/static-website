@@ -26,12 +26,20 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./public/styles'));
 });
 
-gulp.task('watch', function () {
-    gulp.watch('source/html/**/*.html', gulp.series('html'));
-    gulp.watch('source/pug/**/*.pug', gulp.series('pug'));
-    gulp.watch('source/sass/**/*.scss', gulp.series('sass'));
+var ts = require('gulp-typescript');
+var tsProject = ts.createProject('tsconfig.json');
+gulp.task('typescript', function () {
+    return gulp.src('./source/typescript/**/*.ts')
+        .pipe(tsProject())
+        .js.pipe(gulp.dest('./public/scripts'));
 });
 
-gulp.task('default', gulp.series('clean','pug','sass','html', function (done) {
+gulp.task('watch', function () {
+    gulp.watch('source/pug/**/*.pug', gulp.series('pug'));
+    gulp.watch('source/sass/**/*.scss', gulp.series('sass'));
+    gulp.watch('source/typescript/**/*.ts', gulp.series('typescript'));
+});
+
+gulp.task('default', gulp.series('clean','pug','sass','typescript', function (done) {
     done();
 }));
