@@ -11,10 +11,18 @@ gulp.task('html', function () {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('watch', function () {
-    gulp.watch('source/html/**/*.html', gulp.series('html'));
+var pug = require('gulp-pug');
+gulp.task('pug', function () {
+    return gulp.src('./source/pug/pages/*.pug')
+        .pipe(pug({ pretty: true }))
+        .pipe(gulp.dest('./public'));
 });
 
-gulp.task('default', gulp.series('clean','html', function (done) {
+gulp.task('watch', function () {
+    gulp.watch('source/html/**/*.html', gulp.series('html'));
+    gulp.watch('source/pug/**/*.pug', gulp.series('pug'));
+});
+
+gulp.task('default', gulp.series('clean','pug','html', function (done) {
     done();
 }));
